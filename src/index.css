@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ---- Brand palette: dark navy, Amona green, soft sage ---- */
+    --navy-950: 215 46% 6%;
+    --navy-900: 214 42% 10%;
+    --navy-800: 213 37% 16%;
+    --navy-700: 212 32% 22%;
+    --navy-600: 211 27% 34%;
+    --navy-100: 212 24% 88%;
+    --navy-50: 213 26% 95%;
+
+    --green-700: 158 47% 24%;
+    --green-600: 158 45% 30%;
+    --green-500: 157 46% 38%;
+    --green-400: 157 42% 48%;
+    --green-300: 155 40% 62%;
+    --green-200: 156 44% 82%;
+    --green-100: 155 48% 91%;
+
+    --sage-100: 150 22% 96%;
+    --sage-200: 150 20% 91%;
+    --sage-300: 148 17% 83%;
+    --sage-400: 146 12% 63%;
+    --sage-500: 146 11% 47%;
+    --sage-600: 146 12% 38%;
+
+    --success: 158 58% 38%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 47%;
+    --warning-foreground: 34 90% 13%;
+    --danger: 358 68% 52%;
+    --danger-foreground: 0 0% 100%;
+
+    /* ---- Semantic tokens (light: soft sage + white writing areas) ---- */
+    --background: 150 24% 97%;
+    --foreground: 214 42% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 214 42% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 42% 11%;
+
+    --primary: 158 46% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 150 20% 91%;
+    --secondary-foreground: 214 40% 16%;
+
+    --muted: 150 20% 94%;
+    --muted-foreground: 146 12% 41%;
+
+    --accent: 150 22% 90%;
+    --accent-foreground: 214 42% 12%;
+
+    --destructive: 358 68% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 16% 88%;
+    --input: 150 16% 86%;
+    --ring: 157 46% 38%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* ---- Semantic tokens (dark: dark navy surfaces) ---- */
+    --background: 214 42% 8%;
+    --foreground: 210 24% 93%;
+
+    --card: 214 38% 12%;
+    --card-foreground: 210 24% 93%;
+
+    --popover: 214 38% 11%;
+    --popover-foreground: 210 24% 93%;
+
+    --primary: 157 48% 46%;
+    --primary-foreground: 214 42% 8%;
+
+    --secondary: 213 32% 18%;
+    --secondary-foreground: 210 24% 91%;
+
+    --muted: 213 30% 17%;
+    --muted-foreground: 212 14% 64%;
+
+    --accent: 213 32% 19%;
+    --accent-foreground: 210 24% 92%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 30% 21%;
+    --input: 213 30% 21%;
+    --ring: 157 48% 46%;
+
+    --success: 158 55% 44%;
+    --warning: 40 94% 55%;
+    --danger: 0 62% 58%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01" on, "ss02" on;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.18);
+  }
+
+  /* Thin, calm scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--sage-300)) transparent;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle paper grain for the app background */
+  .bg-app {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(
+        ellipse 120% 60% at 50% -10%,
+        hsl(var(--green-100) / 0.55),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 90% 50% at 90% 110%,
+        hsl(var(--navy-100) / 0.35),
+        transparent 60%
+      );
+  }
+
+  .bg-app-dark {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(
+        ellipse 120% 60% at 50% -10%,
+        hsl(var(--green-600) / 0.22),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 90% 50% at 90% 110%,
+        hsl(var(--navy-800) / 0.55),
+        transparent 60%
+      );
+  }
+
+  /* Decorative dots used behind the Life Balance Wheel */
+  .bg-dots {
+    background-image: radial-gradient(
+      hsl(var(--green-400) / 0.25) 1px,
+      transparent 1px
+    );
+    background-size: 18px 18px;
+  }
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
